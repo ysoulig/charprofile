@@ -1,7 +1,5 @@
 
-/* ==========================
-   PAGE NAVIGATION
-========================== */
+/* PAGE NAVIGATION */
 
 function showPage(page) {
   document.querySelectorAll('.page').forEach(section => {
@@ -11,10 +9,7 @@ function showPage(page) {
   document.getElementById(page).classList.add('active');
 
   document.querySelectorAll('.nav-btn').forEach(button => {
-    button.classList.toggle(
-      'active',
-      button.dataset.page === page
-    );
+    button.classList.toggle('active', button.dataset.page === page);
   });
 }
 
@@ -31,9 +26,7 @@ document.querySelectorAll('[data-goto]').forEach(button => {
 });
 
 
-/* ==========================
-   SEARCH EASTER EGG
-========================== */
+/* SEARCH EASTER EGG */
 
 const searchInput = document.getElementById('searchInput');
 const recentSearch = document.getElementById('recentSearch');
@@ -55,16 +48,13 @@ document.addEventListener('click', event => {
 });
 
 
-/* ==========================
-   CHARACTER DATABASE
-========================== */
+/* CHARACTER DATABASE */
 
 const characters = [
   {
     name: 'CHARACTER I',
     type: 'Unknown',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     art: '✿',
     stats: {
       HP: 75,
@@ -77,8 +67,7 @@ const characters = [
   {
     name: 'CHARACTER II',
     type: 'Unknown',
-    description:
-      'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.',
+    description: 'Vestibulum ante ipsum primis in faucibus orci luctus.',
     art: '✧',
     stats: {
       HP: 50,
@@ -92,12 +81,9 @@ const characters = [
 let currentOC = 0;
 
 
-/* ==========================
-   DISPLAY CHARACTER
-========================== */
+/* LOAD CHARACTER */
 
 function loadOC() {
-
   const character = characters[currentOC];
 
   document.getElementById('ocNumber').textContent =
@@ -119,13 +105,10 @@ function loadOC() {
     character.art;
 
   const statList = document.getElementById('statList');
-
   statList.innerHTML = '';
 
   Object.entries(character.stats).forEach(([name, value]) => {
-
     const stat = document.createElement('div');
-
     stat.className = 'stat';
 
     stat.innerHTML = `
@@ -134,12 +117,7 @@ function loadOC() {
         <span class="stat-value">${value}%</span>
       </div>
 
-      <input
-        type="range"
-        min="0"
-        max="100"
-        value="${value}"
-      >
+      <input type="range" min="0" max="100" value="${value}">
     `;
 
     const slider = stat.querySelector('input');
@@ -151,39 +129,28 @@ function loadOC() {
     });
 
     statList.appendChild(stat);
-
   });
-
 }
 
 
-/* ==========================
-   SWITCH CHARACTERS
-========================== */
+/* SWITCH CHARACTERS */
 
 function changeOC(direction) {
-
   currentOC =
-    (currentOC + direction + characters.length)
-    % characters.length;
+    (currentOC + direction + characters.length) % characters.length;
 
   loadOC();
-
 }
 
-document.getElementById('previousOC')
-  .addEventListener('click', () => {
-    changeOC(-1);
-  });
+document.getElementById('previousOC').addEventListener('click', () => {
+  changeOC(-1);
+});
 
-document.getElementById('nextOC')
-  .addEventListener('click', () => {
-    changeOC(1);
-  });
+document.getElementById('nextOC').addEventListener('click', () => {
+  changeOC(1);
+});
 
 
-/* ==========================
-   INITIALIZE WEBSITE
-========================== */
+/* INITIALIZE */
 
 loadOC();
