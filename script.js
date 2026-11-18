@@ -1,156 +1,157 @@
 
-/* PAGE NAVIGATION */
+// PAGE NAVIGATION
 
-function showPage(page) {
-  document.querySelectorAll('.page').forEach(section => {
-    section.classList.remove('active');
+const pages = document.querySelectorAll(".page");
+const navButtons = document.querySelectorAll(".nav-button");
+
+function showPage(pageName) {
+  pages.forEach(page => {
+    page.classList.toggle("active", page.id === pageName);
   });
 
-  document.getElementById(page).classList.add('active');
-
-  document.querySelectorAll('.nav-btn').forEach(button => {
-    button.classList.toggle('active', button.dataset.page === page);
+  navButtons.forEach(button => {
+    button.classList.toggle(
+      "active",
+      button.dataset.page === pageName
+    );
   });
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-document.querySelectorAll('.nav-btn').forEach(button => {
-  button.addEventListener('click', () => {
+navButtons.forEach(button => {
+  button.addEventListener("click", () => {
     showPage(button.dataset.page);
   });
 });
 
-document.querySelectorAll('[data-goto]').forEach(button => {
-  button.addEventListener('click', () => {
-    showPage(button.dataset.goto);
+document.querySelectorAll("[data-go]").forEach(button => {
+  button.addEventListener("click", () => {
+    showPage(button.dataset.go);
   });
 });
 
 
-/* SEARCH EASTER EGG */
+// SEARCH EASTER EGG
 
-const searchInput = document.getElementById('searchInput');
-const recentSearch = document.getElementById('recentSearch');
-const easterEgg = document.getElementById('easterEgg');
+const searchBox = document.getElementById("searchBox");
+const searchInput = document.getElementById("searchInput");
+const recentSearch = document.getElementById("recentSearch");
+const recentItem = document.getElementById("recentItem");
 
-searchInput.addEventListener('focus', () => {
-  recentSearch.classList.add('show');
+searchBox.addEventListener("click", () => {
+  recentSearch.classList.toggle("show");
 });
 
-easterEgg.addEventListener('click', () => {
-  searchInput.value = 'does aj have a cat';
-  recentSearch.classList.remove('show');
+recentItem.addEventListener("click", (event) => {
+  event.stopPropagation();
+
+  searchInput.value = "does aj have a cat?";
+  recentSearch.classList.remove("show");
 });
 
-document.addEventListener('click', event => {
-  if (!event.target.closest('.search-wrap')) {
-    recentSearch.classList.remove('show');
+document.addEventListener("click", (event) => {
+  if (!searchBox.contains(event.target) &&
+      !recentSearch.contains(event.target)) {
+    recentSearch.classList.remove("show");
   }
 });
 
 
-/* CHARACTER DATABASE */
+// CHARACTER INFORMATION
+// Replace these placeholders with your own OC details.
 
 const characters = [
   {
-    name: 'CHARACTER I',
-    type: 'Unknown',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    art: '✿',
+    number: "NO. 001",
+    name: "Character One",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    realName: "Lorem",
+    age: "00",
+    pronouns: "Lorem / Ipsum",
+    species: "Lorem",
+    art: "OC 001 ARTWORK",
     stats: {
-      HP: 75,
-      STRENGTH: 40,
-      CREATIVITY: 90,
-      LUCK: 60
+      strength: 70,
+      creativity: 90,
+      energy: 55,
+      luck: 80
     }
   },
-
   {
-    name: 'CHARACTER II',
-    type: 'Unknown',
-    description: 'Vestibulum ante ipsum primis in faucibus orci luctus.',
-    art: '✧',
+    number: "NO. 002",
+    name: "Character Two",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    realName: "Ipsum",
+    age: "00",
+    pronouns: "Ipsum / Lorem",
+    species: "Lorem",
+    art: "OC 002 ARTWORK",
     stats: {
-      HP: 50,
-      STRENGTH: 85,
-      CREATIVITY: 65,
-      LUCK: 30
+      strength: 45,
+      creativity: 75,
+      energy: 90,
+      luck: 60
     }
   }
 ];
 
-let currentOC = 0;
+let currentCharacter = 0;
 
 
-/* LOAD CHARACTER */
+// DISPLAY CHARACTER PROFILE
 
-function loadOC() {
-  const character = characters[currentOC];
+function displayCharacter(index) {
+  currentCharacter = (index + characters.length) % characters.length;
 
-  document.getElementById('ocNumber').textContent =
-    `CHARACTER 0${currentOC + 1} / 02`;
+  const character = characters[currentCharacter];
 
-  document.getElementById('characterCounter').textContent =
-    `0${currentOC + 1} — 02`;
+  document.getElementById("profileNumber").textContent = character.number;
+  document.getElementById("profileName").textContent = character.name;
+  document.getElementById("profileDescription").textContent = character.description;
+  document.getElementById("profileNameInfo").textContent = character.realName;
+  document.getElementById("profileAge").textContent = character.age;
+  document.getElementById("profilePronouns").textContent = character.pronouns;
+  document.getElementById("profileSpecies").textContent = character.species;
+  document.getElementById("profileArt").textContent = character.art;
 
-  document.getElementById('ocName').textContent =
-    character.name;
+  document.getElementById("statStrength").style.width =
+    character.stats.strength + "%";
 
-  document.getElementById('ocType').textContent =
-    character.type;
+  document.getElementById("statCreativity").style.width =
+    character.stats.creativity + "%";
 
-  document.getElementById('ocDescription').textContent =
-    character.description;
+  document.getElementById("statEnergy").style.width =
+    character.stats.energy + "%";
 
-  document.getElementById('ocArt').textContent =
-    character.art;
+  document.getElementById("statLuck").style.width =
+    character.stats.luck + "%";
 
-  const statList = document.getElementById('statList');
-  statList.innerHTML = '';
+  showPage("profile");
+}
 
-  Object.entries(character.stats).forEach(([name, value]) => {
-    const stat = document.createElement('div');
-    stat.className = 'stat';
 
-    stat.innerHTML = `
-      <div class="stat-label">
-        <span>${name}</span>
-        <span class="stat-value">${value}%</span>
-      </div>
+// OPEN CHARACTER PROFILES
 
-      <input type="range" min="0" max="100" value="${value}">
-    `;
-
-    const slider = stat.querySelector('input');
-    const valueDisplay = stat.querySelector('.stat-value');
-
-    slider.addEventListener('input', () => {
-      character.stats[name] = Number(slider.value);
-      valueDisplay.textContent = slider.value + '%';
-    });
-
-    statList.appendChild(stat);
+document.querySelectorAll("[data-profile]").forEach(button => {
+  button.addEventListener("click", () => {
+    displayCharacter(Number(button.dataset.profile));
   });
-}
-
-
-/* SWITCH CHARACTERS */
-
-function changeOC(direction) {
-  currentOC =
-    (currentOC + direction + characters.length) % characters.length;
-
-  loadOC();
-}
-
-document.getElementById('previousOC').addEventListener('click', () => {
-  changeOC(-1);
-});
-
-document.getElementById('nextOC').addEventListener('click', () => {
-  changeOC(1);
 });
 
 
-/* INITIALIZE */
+// SWITCH BETWEEN CHARACTERS
 
-loadOC();
+document.getElementById("nextCharacter").addEventListener("click", () => {
+  displayCharacter(currentCharacter + 1);
+});
+
+document.getElementById("previousCharacter").addEventListener("click", () => {
+  displayCharacter(currentCharacter - 1);
+});
+
+
+// INITIAL PROFILE DATA
+
+displayCharacter(0);
+showPage("home");
