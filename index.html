@@ -1,334 +1,318 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJ's OC Database</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OC_DEX // Character Database</title>
+  <!-- Playful Retro & Clean UI Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;700;800&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-<div class="game-window">
+  <!-- Decorative Floating Background Pixels -->
+  <div class="bg-grid"></div>
 
-  <!-- TOP BAR -->
-  <header class="topbar">
-    <div class="window-dots">
-      <span></span><span></span><span></span>
-    </div>
-    <div class="site-name">☆ AJ'S OC DATABASE ☆</div>
-    <div class="window-controls">－　□　×</div>
-  </header>
-
-  <!-- HEADER / SEARCH -->
-  <section class="dashboard">
-    <div class="logo">
-      <div class="logo-symbol">✧</div>
-      <div>
-        <h1>aj's archive</h1>
-        <small>WELCOME TO MY LITTLE WORLD!</small>
+  <!-- Main Handheld Console Shell -->
+  <main class="console-shell">
+    
+    <!-- Top System Status Bar -->
+    <header class="status-bar">
+      <div class="status-left">
+        <span class="power-led"></span>
+        <span class="sys-label">SYS.VER 2.06</span>
       </div>
-    </div>
-
-    <div class="search-area">
-      <div class="search-box" id="searchBox">
-        <span>⌕</span>
-        <input id="searchInput" placeholder="search..." readonly>
-        <span>⌕</span>
+      <div class="status-center">
+        <span class="pixel-tag">★ OC DATABASE ★</span>
       </div>
-
-      <div class="recent-search" id="recentSearch">
-        <small>RECENT SEARCH</small>
-        <div class="recent-item" id="recentItem">
-          ◷　 does aj have a cat?
-          <span>↶</span>
-        </div>
+      <div class="status-right">
+        <span class="battery-icon" title="System Charged">
+          <span class="bat-fill"></span>
+        </span>
+        <span id="clock-display">12:00</span>
       </div>
-    </div>
+    </header>
 
-    <!-- GAME STATS -->
-    <div class="game-stats">
-      <div class="stat">
-        <span>☆ LV. 01</span>
-        <div class="bar"><div class="level-fill"></div></div>
-      </div>
-      <div class="stat">
-        <span>♥ HP</span>
-        <div class="bar"><div class="hp-fill"></div></div>
-      </div>
-      <div class="stat">
-        <span>✧ MP</span>
-        <div class="bar"><div class="mp-fill"></div></div>
-      </div>
-    </div>
-  </section>
+    <!-- Main Navigation Tabs -->
+    <nav class="main-nav" aria-label="Main Navigation">
+      <button class="jelly-btn nav-btn active" data-target="home">
+        <span class="btn-icon">⌂</span> HOME
+      </button>
+      <button class="jelly-btn nav-btn" data-target="socials">
+        <span class="btn-icon">✦</span> SOCIALS
+      </button>
+      <button class="jelly-btn nav-btn" data-target="ocs">
+        <span class="btn-icon">◈</span> OCs
+      </button>
+    </nav>
 
-  <!-- NAVIGATION -->
-  <nav class="navigation">
-    <button class="nav-button active" data-page="home">⌂　HOME</button>
-    <button class="nav-button" data-page="socials">☆　SOCIALS</button>
-    <button class="nav-button" data-page="characters">♧　CHARACTERS</button>
-    <button class="nav-button" data-page="gallery">▧　GALLERY</button>
-  </nav>
+    <!-- Screen Viewport -->
+    <div class="screen-bezel">
+      <div class="screen-viewport">
 
-  <main>
+        <!-- ==================== SECTION 1: HOME ==================== -->
+        <section id="section-home" class="tab-section active">
+          <div class="hero-banner">
+            <div class="badge-pill">PLAYER 1 READY</div>
+            <h1 class="site-title">CREATOR_ARCHIVE<span class="blink">_</span></h1>
+            <p class="site-subtitle">Interactive Original Character &amp; Lore Database</p>
+          </div>
 
-    <!-- HOME PAGE -->
-    <section class="page active" id="home">
-      <div class="home-layout">
+          <!-- Search Bar with Clickable Dropdown Easter Egg -->
+          <div class="search-wrapper">
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input 
+                type="text" 
+                id="retro-search" 
+                placeholder="Search database or click for recent..." 
+                autocomplete="off"
+              />
+              <button type="button" id="search-clear" class="mini-clear-btn" title="Clear">×</button>
+            </div>
 
-        <aside class="sidebar panel">
-          <h2>☆ ABOUT ME!</h2>
-
-          <div class="profile-intro">
-            <div class="avatar-placeholder">♡</div>
-            <div>
-              <strong>HELLO THERE!</strong>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <!-- Dropdown Menu -->
+            <div id="search-dropdown" class="search-dropdown hidden">
+              <div class="dropdown-header">RECENT SEARCHES</div>
+              <button type="button" class="dropdown-item" id="easter-egg-item">
+                <span class="history-clock">🕒</span>
+                <span>does aj have a cat</span>
+                <span class="egg-badge">1</span>
+              </button>
+              <div id="easter-egg-reply" class="egg-reply hidden">
+                <strong>SYSTEM NOTE:</strong> Query inconclusive... maybe check the archives? 🐾
+              </div>
             </div>
           </div>
 
-          <div class="dotted-line"></div>
-
-          <h2>✧ QUICK LINKS</h2>
-          <a class="quick-link" href="#" target="_blank">🎮　 Commissions</a>
-          <a class="quick-link" href="#" target="_blank">♡　 Tumblr</a>
-          <a class="quick-link" href="#" target="_blank">♫　 Spotify</a>
-          <a class="quick-link" href="#" target="_blank">▶　 YouTube</a>
-
-          <div class="sidebar-decoration">✦　♡　✧</div>
-        </aside>
-
-        <div class="main-content panel">
-          <div class="section-heading">
-            <h2>✧ welcome home! ✧</h2>
-            <span>01 / HOME</span>
-          </div>
-
-          <div class="welcome-card">
-            <div>
-              <h3>HELLO, VISITOR!</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Welcome to my personal archive!</p>
-              <p>Feel free to explore my characters, artwork and other little things.</p>
+          <!-- Optional Editable Welcome Card -->
+          <div class="cream-card welcome-card">
+            <div class="card-header">
+              <span class="dot green"></span>
+              <span class="dot blue"></span>
+              <span class="card-title">WELCOME_MESSAGE.TXT</span>
             </div>
-            <div class="welcome-decoration">☆</div>
-          </div>
-
-          <div class="section-heading">
-            <h2>☆ RECENT ACTIVITY</h2>
-          </div>
-
-          <div class="activity-card">
-            <span class="activity-icon">✧</span>
-            <div>
-              <strong>NEW CHARACTER ADDED!</strong>
-              <p>Lorem ipsum dolor sit amet.</p>
+            <div class="card-body">
+              <p>
+                Welcome to my <span class="highlight-blue">character hub</span>! Use the tabs above or the quick-launch buttons below to browse <span class="highlight-green">original characters</span>, stats, and links.
+              </p>
+              <p class="placeholder-note">
+                * Template Note: Replace this intro text in <code>index.html</code> with your own greeting or leave it minimal!
+              </p>
             </div>
-            <span class="activity-date">00/00</span>
           </div>
 
-          <div class="activity-card">
-            <span class="activity-icon">♡</span>
-            <div>
-              <strong>WELCOME TO MY SITE</strong>
-              <p>Thank you for stopping by!</p>
-            </div>
-            <span class="activity-date">00/00</span>
-          </div>
-
-          <div class="section-heading">
-            <h2>♧ CHARACTER SELECT</h2>
-            <button class="text-button" data-go="characters">VIEW ALL →</button>
-          </div>
-
-          <div class="mini-characters">
-            <button class="mini-character" data-profile="0">
-              <div class="mini-art">OC 001</div>
-              <strong>Character One</strong>
-              <small>VIEW PROFILE →</small>
+          <!-- Quick Action Console Buttons -->
+          <div class="quick-actions">
+            <button class="jelly-btn action-green jump-btn" data-target="ocs">
+              ▶ LOAD CHARACTER SLOTS
             </button>
-            <button class="mini-character" data-profile="1">
-              <div class="mini-art">OC 002</div>
-              <strong>Character Two</strong>
-              <small>VIEW PROFILE →</small>
+            <button class="jelly-btn action-blue jump-btn" data-target="socials">
+              ★ VIEW LINKS &amp; INFO
             </button>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- SOCIALS PAGE -->
-    <section class="page" id="socials">
-      <div class="section-heading">
-        <h2>☆ SOCIAL HUB</h2>
-        <span>02 / SOCIALS</span>
-      </div>
-
-      <div class="social-layout">
-        <div class="panel social-panel">
-          <h2>✧ FIND ME ONLINE</h2>
-          <p class="subtext">Lorem ipsum dolor sit amet.</p>
-
-          <a href="#" class="social-link">♡　TUMBLR <span>↗</span></a>
-          <a href="#" class="social-link">✧　INSTAGRAM <span>↗</span></a>
-          <a href="#" class="social-link">♫　SPOTIFY <span>↗</span></a>
-          <a href="#" class="social-link">▶　YOUTUBE <span>↗</span></a>
-          <a href="#" class="social-link">☁　OTHER <span>↗</span></a>
-        </div>
-
-        <div class="panel likes-panel">
-          <h2>♡ LIKES & DISLIKES</h2>
-
-          <div class="likes-box">
-            <h3>✦ LIKES</h3>
-            <p>✧ Lorem ipsum</p>
-            <p>✧ Dolor sit amet</p>
-            <p>✧ Consectetur</p>
-            <p>✧ Adipiscing elit</p>
+        <!-- ==================== SECTION 2: SOCIALS ==================== -->
+        <section id="section-socials" class="tab-section">
+          <div class="section-header">
+            <h2><span class="pixel-accent">✦</span> PLAYER PROFILE &amp; LINKS</h2>
+            <span class="mini-pill">ONLINE</span>
           </div>
 
-          <div class="likes-box dislikes">
-            <h3>✕ DISLIKES</h3>
-            <p>✧ Lorem ipsum</p>
-            <p>✧ Dolor sit amet</p>
-            <p>✧ Consectetur</p>
-            <p>✧ Adipiscing elit</p>
+          <!-- Social Media Links Grid -->
+          <div class="socials-grid">
+            <a href="#" class="jelly-link-card" target="_blank" rel="noopener">
+              <span class="social-icon">🌐</span>
+              <div class="social-text">
+                <strong>WEBSITE / CARRD</strong>
+                <span>@username</span>
+              </div>
+            </a>
+            <a href="#" class="jelly-link-card" target="_blank" rel="noopener">
+              <span class="social-icon">🎨</span>
+              <div class="social-text">
+                <strong>ART GALLERY</strong>
+                <span>@art_handle</span>
+              </div>
+            </a>
+            <a href="#" class="jelly-link-card" target="_blank" rel="noopener">
+              <span class="social-icon">💬</span>
+              <div class="social-text">
+                <strong>SOCIAL / FEED</strong>
+                <span>@social_tag</span>
+              </div>
+            </a>
+            <a href="#" class="jelly-link-card" target="_blank" rel="noopener">
+              <span class="social-icon">👾</span>
+              <div class="social-text">
+                <strong>TOYHOUSE / OC HUB</strong>
+                <span>@oc_archive</span>
+              </div>
+            </a>
           </div>
-        </div>
-      </div>
 
-      <div class="panel interests-panel">
-        <h2>✧ CURRENT INTERESTS</h2>
-        <div class="interest-tags">
-          <span>VIDEO GAMES</span>
-          <span>ART</span>
-          <span>MUSIC</span>
-          <span>CHARACTER DESIGN</span>
-          <span>LOREM IPSUM</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- CHARACTERS PAGE -->
-    <section class="page" id="characters">
-      <div class="section-heading">
-        <h2>♧ CHARACTER DATABASE</h2>
-        <span>03 / SELECT A CHARACTER</span>
-      </div>
-
-      <div class="character-grid">
-
-        <article class="character-card">
-          <div class="character-art">OC 001 ARTWORK</div>
-          <div class="character-details">
-            <span class="character-id">NO. 001</span>
-            <h2>Character One</h2>
-            <p>Lorem ipsum dolor sit amet.</p>
-            <div class="character-tags">
-              <span>TAG ONE</span><span>TAG TWO</span>
+          <!-- Likes & Dislikes Split Box -->
+          <div class="split-grid">
+            <div class="cream-card mini-card">
+              <div class="card-header green-tint">
+                <span class="card-title">♥ LIKES</span>
+              </div>
+              <ul class="retro-list">
+                <li>Placeholder item one</li>
+                <li>Retro handheld games</li>
+                <li>Character worldbuilding</li>
+                <li>Lorem ipsum dolor sit</li>
+              </ul>
             </div>
-            <button class="primary-button" data-profile="0">VIEW PROFILE →</button>
-          </div>
-        </article>
 
-        <article class="character-card">
-          <div class="character-art">OC 002 ARTWORK</div>
-          <div class="character-details">
-            <span class="character-id">NO. 002</span>
-            <h2>Character Two</h2>
-            <p>Lorem ipsum dolor sit amet.</p>
-            <div class="character-tags">
-              <span>TAG ONE</span><span>TAG TWO</span>
+            <div class="cream-card mini-card">
+              <div class="card-header blue-tint">
+                <span class="card-title">✖ DISLIKES</span>
+              </div>
+              <ul class="retro-list">
+                <li>Placeholder item two</li>
+                <li>Low battery warnings</li>
+                <li>Corrupted save files</li>
+                <li>Amet consectetur elit</li>
+              </ul>
             </div>
-            <button class="primary-button" data-profile="1">VIEW PROFILE →</button>
           </div>
-        </article>
 
-      </div>
-    </section>
-
-    <!-- INDIVIDUAL CHARACTER PROFILE -->
-    <section class="page" id="profile">
-      <div class="section-heading">
-        <button class="text-button" data-go="characters">← BACK TO CHARACTERS</button>
-        <span id="profileNumber">NO. 001</span>
-      </div>
-
-      <div class="profile-layout panel">
-        <div class="profile-art" id="profileArt">OC ARTWORK</div>
-
-        <div class="profile-information">
-          <span class="character-id">CHARACTER DATABASE</span>
-          <h1 id="profileName">Character One</h1>
-          <p id="profileDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-          <div class="info-row"><strong>NAME</strong><span id="profileNameInfo">Lorem</span></div>
-          <div class="info-row"><strong>AGE</strong><span id="profileAge">00</span></div>
-          <div class="info-row"><strong>PRONOUNS</strong><span id="profilePronouns">Lorem / Ipsum</span></div>
-          <div class="info-row"><strong>SPECIES</strong><span id="profileSpecies">Lorem</span></div>
-
-          <h3>✧ CHARACTER STATS</h3>
-
-          <div class="character-stat">
-            <span>STRENGTH</span>
-            <div class="bar"><div id="statStrength" class="stat-fill"></div></div>
+          <!-- Miscellaneous / Interests Box -->
+          <div class="cream-card">
+            <div class="card-header">
+              <span class="card-title">◈ INTERESTS &amp; MISC NOTES</span>
+            </div>
+            <div class="card-body">
+              <div class="tag-cloud">
+                <span class="soft-tag">#PlaceholderTag</span>
+                <span class="soft-tag">#Worldbuilding</span>
+                <span class="soft-tag">#CharacterDesign</span>
+                <span class="soft-tag">#RetroUI</span>
+                <span class="soft-tag">#LoremIpsum</span>
+              </div>
+              <p class="misc-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. You can use this space for commission status, fandoms, or general notes about your page.
+              </p>
+            </div>
           </div>
-          <div class="character-stat">
-            <span>CREATIVITY</span>
-            <div class="bar"><div id="statCreativity" class="stat-fill"></div></div>
-          </div>
-          <div class="character-stat">
-            <span>ENERGY</span>
-            <div class="bar"><div id="statEnergy" class="stat-fill"></div></div>
-          </div>
-          <div class="character-stat">
-            <span>LUCK</span>
-            <div class="bar"><div id="statLuck" class="stat-fill"></div></div>
-          </div>
-        </div>
-      </div>
+        </section>
 
-      <div class="profile-switch">
-        <button class="primary-button" id="previousCharacter">← PREVIOUS</button>
-        <span>✦ CHARACTER SELECT ✦</span>
-        <button class="primary-button" id="nextCharacter">NEXT →</button>
-      </div>
-    </section>
+        <!-- ==================== SECTION 3: OCs ==================== -->
+        <section id="section-ocs" class="tab-section">
+          <!-- Character Switcher Header -->
+          <div class="oc-nav-bar">
+            <button id="prev-oc-btn" class="jelly-btn arrow-btn" aria-label="Previous Character">◀</button>
+            
+            <div class="slot-indicator">
+              <span id="slot-counter">SLOT 01 / 02</span>
+              <div class="slot-dots" id="slot-dots"></div>
+            </div>
 
-    <!-- GALLERY PAGE -->
-    <section class="page" id="gallery">
-      <div class="section-heading">
-        <h2>▧ ART GALLERY</h2>
-        <span>04 / COLLECTION</span>
-      </div>
+            <button id="next-oc-btn" class="jelly-btn arrow-btn" aria-label="Next Character">▶</button>
+          </div>
 
-      <div class="panel gallery-panel">
-        <p class="subtext">A little collection of artwork and character illustrations.</p>
-        <div class="gallery-grid">
-          <div class="gallery-placeholder">ARTWORK 01</div>
-          <div class="gallery-placeholder">ARTWORK 02</div>
-          <div class="gallery-placeholder">ARTWORK 03</div>
-          <div class="gallery-placeholder">ARTWORK 04</div>
-          <div class="gallery-placeholder">ARTWORK 05</div>
-          <div class="gallery-placeholder">ARTWORK 06</div>
-        </div>
+          <!-- Main OC Showcase Card -->
+          <div class="oc-profile-grid">
+            
+            <!-- Left Column: Artwork & Vital Bars -->
+            <div class="oc-visual-col">
+              <div class="artwork-frame">
+                <div class="frame-top">
+                  <span id="oc-code">ID #001</span>
+                  <span id="oc-lvl" class="lvl-badge">LVL. 25</span>
+                </div>
+                <div class="artwork-box" id="oc-art-container">
+                  <!-- Placeholder SVG / Image rendered by JS -->
+                </div>
+              </div>
+
+              <!-- HP & MP Game Bars -->
+              <div class="cream-card vitals-card">
+                <div class="vital-row">
+                  <div class="vital-label">
+                    <span class="vital-tag hp">HP</span>
+                    <span id="oc-hp-text">85 / 100</span>
+                  </div>
+                  <div class="bar-track">
+                    <div id="oc-hp-fill" class="bar-fill hp-fill" style="width: 85%;"></div>
+                  </div>
+                </div>
+
+                <div class="vital-row">
+                  <div class="vital-label">
+                    <span class="vital-tag mp">MP</span>
+                    <span id="oc-mp-text">60 / 100</span>
+                  </div>
+                  <div class="bar-track">
+                    <div id="oc-mp-fill" class="bar-fill mp-fill" style="width: 60%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Info, Traits & Stats -->
+            <div class="oc-details-col">
+              <div class="cream-card">
+                <div class="oc-title-block">
+                  <h2 id="oc-name">CHARACTER NAME</h2>
+                  <span id="oc-role" class="role-badge">CLASS / ARCHETYPE</span>
+                </div>
+                <p id="oc-desc" class="oc-short-desc">
+                  Short character summary goes here.
+                </p>
+
+                <!-- Basic Info Grid -->
+                <div class="info-grid" id="oc-basic-info">
+                  <!-- Populated by JS -->
+                </div>
+              </div>
+
+              <!-- Personality Traits -->
+              <div class="cream-card">
+                <div class="card-header green-tint">
+                  <span class="card-title">★ PERSONALITY TRAITS</span>
+                </div>
+                <div class="card-body">
+                  <div class="traits-wrap" id="oc-traits">
+                    <!-- Populated by JS -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Customizable Game Stats -->
+              <div class="cream-card">
+                <div class="card-header blue-tint">
+                  <span class="card-title">◈ CHARACTER STATS</span>
+                </div>
+                <div class="card-body stats-list" id="oc-stats">
+                  <!-- Populated by JS -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
       </div>
-    </section>
+    </div>
+
+    <!-- Bottom Console Footer -->
+    <footer class="console-footer">
+      <div class="d-pad-deco">
+        <span></span><span></span><span></span>
+      </div>
+      <span class="footer-credit">TEMPLATE MADE BY AJ • CUSTOMIZABLE OC DEX</span>
+      <div class="ab-buttons-deco">
+        <span class="mini-a">B</span>
+        <span class="mini-b">A</span>
+      </div>
+    </footer>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="currency">☆ ¥ 7,035</div>
-    <div class="footer-message">✦ ✦ ✦ THANKS FOR VISITING! ♡ ✦ ✦ ✦</div>
-    <div class="footer-icons">
-      <span>✉</span><span>☏</span><span>⚙</span>
-    </div>
-  </footer>
-
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
