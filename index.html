@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Player Archive</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="site">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-icon">✿</span>
+      <span>PLAYER <b>ARCHIVE</b></span>
+    </div>
+
+    <div class="search-wrap">
+      <div class="search-box">
+        <span>⌕</span>
+        <input id="searchInput" type="text"
+          placeholder="Search the archive..." autocomplete="off">
+        <span class="search-arrow">↵</span>
+      </div>
+
+      <div class="recent-search" id="recentSearch">
+        <small>RECENT SEARCH</small>
+        <button id="easterEgg">⌕ &nbsp; does aj have a cat</button>
+      </div>
+    </div>
+
+    <div class="player-level">
+      <span>PLAYER</span>
+      <b>LV. 01</b>
+    </div>
+  </header>
+
+  <nav class="navigation">
+    <button class="nav-btn active" data-page="home">⌂ HOME</button>
+    <button class="nav-btn" data-page="socials">♡ SOCIALS</button>
+    <button class="nav-btn" data-page="ocs">✧ CHARACTERS</button>
+  </nav>
+
+  <section class="game-stats">
+    <div class="game-stat">
+      <div><span>♡ HEALTH</span><b>85/100</b></div>
+      <div class="health-track"><div class="health-fill hp"></div></div>
+    </div>
+
+    <div class="game-stat">
+      <div><span>✧ ENERGY</span><b>65/100</b></div>
+      <div class="health-track"><div class="health-fill energy"></div></div>
+    </div>
+
+    <div class="game-stat">
+      <div><span>★ EXPERIENCE</span><b>40/100</b></div>
+      <div class="health-track"><div class="health-fill exp"></div></div>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- HOME PAGE -->
+
+    <section class="page active" id="home">
+
+      <div class="page-heading">
+        <div>
+          <span class="eyebrow">WELCOME, PLAYER!</span>
+          <h1>PLAYER <span>PROFILE</span></h1>
+          <p>Vestibulum ante ipsum primis in faucibus.</p>
+        </div>
+        <div class="heading-icon">✦</div>
+      </div>
+
+      <div class="home-layout">
+
+        <article class="panel about-panel">
+          <div class="panel-heading">
+            <h2>✿ ABOUT ME</h2>
+            <span class="mini-label">01 / INFO</span>
+          </div>
+
+          <div class="profile-picture">
+            <span>✿</span>
+            <small>PROFILE IMAGE</small>
+          </div>
+
+          <h3 class="profile-name">PLAYER NAME</h3>
+          <div class="class-tag">CLASS: UNKNOWN</div>
+
+          <p class="description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+
+          <div class="profile-details">
+            <div><span>STATUS</span><b>Online</b></div>
+            <div><span>LEVEL</span><b>01</b></div>
+            <div><span>LOCATION</span><b>Unknown</b></div>
+          </div>
+        </article>
+
+        <div class="home-right">
+
+          <article class="panel welcome-panel">
+            <div class="panel-heading">
+              <h2>✧ PLAYER INFORMATION</h2>
+            </div>
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Integer posuere erat a ante.
+            </p>
+
+            <div class="decoration-line">✧ ───────── ✧</div>
+
+            <div class="quick-links">
+              <button data-goto="socials">♡ SOCIAL DATABASE <span>→</span></button>
+              <button data-goto="ocs">✿ CHARACTER ARCHIVE <span>→</span></button>
+            </div>
+          </article>
+
+          <article class="panel notice-panel">
+            <div class="panel-heading">
+              <h2>★ NOTICE BOARD</h2>
+              <span class="mini-label">LATEST</span>
+            </div>
+            <p>
+              Nulla facilisi. Praesent commodo cursus magna,
+              vel scelerisque nisl consectetur.
+            </p>
+            <div class="notice-bottom">SYSTEM MESSAGE — 001</div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIALS PAGE -->
+
+    <section class="page" id="socials">
+
+      <div class="page-heading">
+        <div>
+          <span class="eyebrow">CONNECTION DATABASE</span>
+          <h1>SOCIAL <span>PROFILE</span></h1>
+          <p>Find the player across different platforms.</p>
+        </div>
+        <div class="heading-icon">♡</div>
+      </div>
+
+      <div class="social-layout">
+
+        <article class="panel">
+          <div class="panel-heading">
+            <h2>♡ FIND ME</h2>
+            <span class="mini-label">LINKS</span>
+          </div>
+
+          <p class="description">
+            Connect through the following platforms.
+          </p>
+
+          <a href="#" class="social-link instagram">
+            <span>◎</span> INSTAGRAM <b>@username ↗</b>
+          </a>
+
+          <a href="#" class="social-link tumblr">
+            <span>✦</span> TUMBLR <b>@username ↗</b>
+          </a>
+
+          <a href="#" class="social-link discord">
+            <span>◈</span> DISCORD <b>username ↗</b>
+          </a>
+
+          <a href="#" class="social-link other">
+            <span>♡</span> OTHER <b>@username ↗</b>
+          </a>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <h2>★ LIKES & DISLIKES</h2>
+            <span class="mini-label">PERSONAL</span>
+          </div>
+
+          <div class="likes-section">
+            <h3>♡ LIKES</h3>
+            <p>✿ Lorem ipsum</p>
+            <p>✿ Dolor sit amet</p>
+            <p>✿ Consectetur adipiscing</p>
+            <p>✿ Vestibulum ante</p>
+          </div>
+
+          <div class="likes-section dislikes">
+            <h3>✕ DISLIKES</h3>
+            <p>✕ Tempor incididunt</p>
+            <p>✕ Nunc nonummy</p>
+            <p>✕ Sed do eiusmod</p>
+            <p>✕ Nulla facilisi</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CHARACTER PAGE -->
+
+    <section class="page" id="ocs">
+
+      <div class="page-heading">
+        <div>
+          <span class="eyebrow">REGISTERED CHARACTERS: 02</span>
+          <h1>CHARACTER <span>ARCHIVE</span></h1>
+          <p>Select a profile to inspect its details.</p>
+        </div>
+        <div class="heading-icon">✧</div>
+      </div>
+
+      <article class="panel character-panel">
+
+        <div class="character-toolbar">
+          <div>
+            <span class="eyebrow">CHARACTER DATABASE</span>
+            <h2 id="ocNumber">CHARACTER 01 / 02</h2>
+          </div>
+
+          <div class="character-arrows">
+            <button id="previousOC">←</button>
+            <button id="nextOC">→</button>
+          </div>
+        </div>
+
+        <div class="character-layout">
+
+          <div class="character-art">
+            <div class="art-placeholder" id="ocArt">✿</div>
+            <span>CHARACTER ARTWORK</span>
+            <small>IMAGE PLACEHOLDER</small>
+          </div>
+
+          <div class="character-information">
+
+            <span class="mini-label">PROFILE INFORMATION</span>
+            <h2 id="ocName">CHARACTER I</h2>
+
+            <p id="ocDescription" class="description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+
+            <div class="character-details">
+              <div><span>TYPE</span><b id="ocType">Unknown</b></div>
+              <div><span>STATUS</span><b>Active</b></div>
+              <div><span>LEVEL</span><b>01</b></div>
+            </div>
+
+            <div class="stats-heading">
+              <h3>✧ CHARACTER STATS</h3>
+              <small>EDITABLE</small>
+            </div>
+
+            <div id="statList"></div>
+
+          </div>
+        </div>
+
+        <div class="character-footer">
+          <span>✦ CHARACTER RECORD</span>
+          <span id="characterCounter">01 — 02</span>
+        </div>
+
+      </article>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>✿ PLAYER ARCHIVE</span>
+    <span>EST. 2026 · ALL RIGHTS RESERVED</span>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
